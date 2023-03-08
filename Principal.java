@@ -21,13 +21,15 @@ public class Principal{
     System.out.println(" ..:: Bienvenido al interprete LISP ::.. ");
     System.out.println(" Ingresa una operacion o escribe exit para salir ");
     System.out.println(" Escribe tu operacion: ");
+
+    Interprete interpreter = new Interprete();
     
     do {
         operation = teclado.nextLine();
         
         if (!operation.equals("exit")) {
-
-            
+            int estado = interpreter.getType(operation);
+                        
         }
         
     }while (!operation.equals("exit"));
