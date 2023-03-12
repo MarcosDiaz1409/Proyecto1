@@ -10,8 +10,8 @@ import java.util.HashMap;
 public class Variable<T>{
 
     private String nombre;
-    private T valor;
-    private HashMap<String, Integer> variables;
+    private Object valor;
+    private static HashMap<String, Object> variables = new HashMap<String, Object>();
 
     /**
      * Parametros de la clase variable
@@ -20,38 +20,18 @@ public class Variable<T>{
      */
 
     // Constructor de la clase
-    public Variable(String nombre, T valor, HashMap<String, Integer> variables){
-        this.nombre = nombre;
-        this.valor = valor;
-        variables = new HashMap<String, Integer>();
+    public Variable(){
+        variables = new HashMap<>();
     }
 
-    /**
-     * @return nombre
-     */
-    public String getNombre() {
-        return this.nombre;
+    public void setq(String nombre, Object valor) {
+        variables.put(nombre, valor);
     }
 
-    /**
-     * @param nombre
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Object get(String nombre) {
+        return variables.get(nombre);
     }
 
-    /**
-     * @return valor
-     */
-    public T getValor() {
-        return this.valor;
-    }
-
-    /**
-     * @param valor
-     */
-    public void setValor(T valor) {
-        this.valor = valor;
-    }
+    
 
 }
