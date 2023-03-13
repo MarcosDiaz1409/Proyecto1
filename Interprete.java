@@ -31,19 +31,18 @@ public class Interprete{
                 String name = elementos[1];
                 Object value = elementos[2];
 
-                Variable variable = new Variable();
-                variable.setq(name, value);  
+                System.out.println(name);
+                System.out.println(value);
+
                 
-                System.out.println("La variable " + name + " tiene un valor de " + value);
+                
+                //System.out.println("La variable " + name + " tiene un valor de " + value);
             
             break;
 
             case 2:
 
-                Variable variable1 = new Variable();
-                String[] partes = operation.split(" ");
-                String nombre = partes[0];
-                System.out.println(variable1.get(nombre));  
+                
 
             break;
 

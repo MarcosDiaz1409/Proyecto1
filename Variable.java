@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 /**
  * @author Marcos Diaz y Daniel Machic
  * @Date: 28/02/2023
@@ -7,11 +5,10 @@ import java.util.HashMap;
  * Clase que instancia una variable ingresada en el interprete
  */
 
-public class Variable<T>{
+public class Variable{
 
     private String nombre;
     private Object valor;
-    private static HashMap<String, Object> variables = new HashMap<String, Object>();
 
     /**
      * Parametros de la clase variable
@@ -20,18 +17,37 @@ public class Variable<T>{
      */
 
     // Constructor de la clase
-    public Variable(){
-        variables = new HashMap<>();
+    public Variable(String nombre, Object valor){
+        this.valor = valor;
+        this.nombre = nombre;
     }
 
-    public void setq(String nombre, Object valor) {
-        variables.put(nombre, valor);
+    /**
+     * @return String
+     */
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public Object get(String nombre) {
-        return variables.get(nombre);
+    /**
+     * @param nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    
+    /**
+     * @return Object
+     */
+    public Object getValor() {
+        return this.valor;
+    }
+
+    /**
+     * @param valor
+     */
+    public void setValor(Object valor) {
+        this.valor = valor;
+    }
 
 }
