@@ -8,7 +8,7 @@ public class Interprete{
 
     public static int getType(String expresion){
 
-        if (evaluate("^[ ]*setq[ ]+[a-z]+[ ]+[0-9]+[ ]*$",expresion)){
+        if (evaluate("^[ ]*setq[ ]+[[a-zA-Z]]+[ ]+.++[ ]*$",expresion)){
             return 1;
         }else if(evaluate("^[ ]*+[a-z]?$",expresion)){
             return 2;
