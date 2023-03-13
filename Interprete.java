@@ -4,6 +4,8 @@ import java.util.regex.Pattern;
 
 public class Interprete{
 
+    Asignante asignante = new Asignante();
+
     public static int getType(String expresion){
 
         if (evaluate("^[ ]*setq[ ]+[a-z]+[ ]+[0-9]+[ ]*$",expresion)){
@@ -24,25 +26,40 @@ public class Interprete{
 	}
 
     public void Operator(int estado, String operation){
-        switch (estado) {
+        switch (estado){
+
             case 1:
 
                 String[] elementos = operation.split(" ");  
                 String name = elementos[1];
-                Object value = elementos[2];
+                String value = elementos[2];
 
                 System.out.println(name);
                 System.out.println(value);
 
-                
-                
-                //System.out.println("La variable " + name + " tiene un valor de " + value);
+                Object valor = null;
+                try {
+                    valor = Double.parseDouble(value);
+                } catch (NumberFormatException e) {
+                    // TODO: handle exception
+                    valor = value;
+                }
+
+                asignante.setqFunction(name, valor);
+                System.out.println("La variable ha sido guardada con el valor de: " + value);
             
             break;
 
             case 2:
 
-                
+                String nomVar = operation;
+                Object valorN = asignante.getValue(nomVar);
+                if(valorN != null){
+                    System.out.println(valorN);
+                }
+                else{
+                    System.out.println("La variable no existe");
+                }
 
             break;
 
@@ -50,10 +67,6 @@ public class Interprete{
                 System.out.println("Error: expresion invalida");
             break;
         
-            default:
-                System.out.println("Error: expresion invalida");
-            break;
-
         }
     }
 
