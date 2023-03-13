@@ -12,6 +12,8 @@ public class Interprete{
             return 1;
         }else if(evaluate("^[ ]*+[a-z]?$",expresion)){
             return 2;
+        }else if(evaluate("^\\(quote\\s*\\(.*\\)\\)$", expresion)){
+            return 3;
         }
         else{
             return -1;
@@ -60,6 +62,13 @@ public class Interprete{
                 else{
                     System.out.println("La variable no existe");
                 }
+
+            break;
+
+            case 3:
+
+                String newOperation = operation.replaceAll("quote", "");
+                System.out.println(newOperation);
 
             break;
 
