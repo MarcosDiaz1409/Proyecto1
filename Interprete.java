@@ -12,6 +12,9 @@ import java.util.regex.Pattern;
 public class Interprete{
 
     Asignante asignante = new Asignante();
+    Operador operador = new Operador();
+
+
 
     /**
      * Metodo que evalua el string ingresado y devuelve un valor dependiendo de la sintaxis
@@ -26,6 +29,10 @@ public class Interprete{
             return 2;
         }else if(evaluate("^\\(quote\\s*\\(.*\\)\\)$", expresion)){
             return 3;
+        }else if(evaluate("^\\(\\d+\\s*[<>]\\s*\\d+\\)$", expresion)){
+            return 4;
+        }else if(evaluate("^\\((\\w+)\\s*=\\s*(\\w+)\\)$", expresion)){
+            return 5;
         }
         else{
             return -1;
@@ -93,6 +100,36 @@ public class Interprete{
                 String newOperation = operation.replaceAll("quote", "");
                 System.out.println(newOperation);
 
+            break;
+
+            case 4:
+
+                String newString = operation.replaceAll("[()]", "");
+                String[] partes = newString.split(" ");
+
+                int v1 = Integer.parseInt(partes[0]);
+                int v2 = Integer.parseInt(partes[2]);
+                String signo = partes[1]; 
+
+                if(signo.equals(">")){
+                    System.out.println(operador.Mayor(v1, v2));
+                }else if(signo.equals("<")){
+                    System.out.println(operador.Menor(v1, v2));
+                }
+                
+
+            break;
+
+            case 5:
+
+                String newString1 = operation.replaceAll("[()]", " ");
+                String[] partes1 = newString1.split("=");
+
+                int num1 = Integer.parseInt(partes1[0].replaceAll("\\D", ""));
+                int num2 = Integer.parseInt(partes1[1].replaceAll("\\D", ""));
+
+                System.out.println(operador.isEqualTo(num1, num2));
+            
             break;
 
             case -1:
