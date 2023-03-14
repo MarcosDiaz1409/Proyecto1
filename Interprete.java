@@ -2,10 +2,22 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Marcos Diaz y Daniel Machic
+ * @Date: 02/03/2023
+ * Sección: 40
+ * Clase donde el interprete hace todas las funciones dependendiendo de lo que el usuario haya ingresado
+*/
+
 public class Interprete{
 
     Asignante asignante = new Asignante();
 
+    /**
+     * Metodo que evalua el string ingresado y devuelve un valor dependiendo de la sintaxis
+     * @param expresion
+     * @return int
+     */
     public static int getType(String expresion){
 
         if (evaluate("^[ ]*setq[ ]+[[a-zA-Z]]+[ ]+.++[ ]*$",expresion)){
@@ -21,12 +33,23 @@ public class Interprete{
         
     }
 
+    /**
+     * Metodo que hace la comparacion del string
+     * @param regex
+     * @param expresion
+     * @return boolean
+     */
     private static boolean evaluate(String regex, String expresion) {
 		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 	    Matcher matcher = pattern.matcher(expresion);
 	    return matcher.find();
 	}
 
+    /**
+     * Metodo que hace el procedimiento correspondiente dependiendo de la sintaxis ingresada
+     * @param estado
+     * @param operation
+     */
     public void Operator(int estado, String operation){
         switch (estado){
 
