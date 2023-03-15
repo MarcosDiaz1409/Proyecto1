@@ -136,6 +136,44 @@ public class Interprete{
             
             break;
 
+            case 6:
+
+                Pattern patron = Pattern.compile("^\\((.*?)\\)$");
+                Matcher evaluador = patron.matcher(operation);
+                if (evaluador.find()){
+                    String atomo = evaluador.group(1);
+                    Object dato = null;
+                    if(atomo.matches("atom\\s+\\(.+\\)")){
+                        System.out.println(false);
+                        break;
+                    }
+                    if(atomo.matches("\\d+")) {
+                        dato = Integer.parseInt(atomo);
+                    } else if(atomo.matches("\\d+\\.\\d+")) {
+                        dato = Double.parseDouble(atomo);
+                    }else {
+                        dato = atomo;
+                    }
+
+                    System.out.println(operador.Atom(dato));
+
+                }
+
+
+            break;
+
+            case 7:
+
+                int index = operation.indexOf("list") + "list".length();  
+                String result = operation.substring(index).trim(); 
+                String newResult = result.replaceAll("[)]", "");
+
+                String[] lista = newResult.split(" ");
+                
+                System.out.println(operador.createLista(lista));
+
+            break;
+
             case -1:
                 System.out.println("Error: expresion invalida");
             break;
