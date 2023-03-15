@@ -41,4 +41,36 @@ public class Operador{
         return res;
     }
     
+    public boolean Atom(Object objeto){
+
+        if(objeto instanceof Integer || objeto instanceof Double || objeto instanceof Character || objeto instanceof String || objeto == null) {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public List<Object> createLista(String[] string){
+        
+        List<Object> lista = new ArrayList<>();
+        Object partesLista;
+        for(String elemento : string){
+
+            if(elemento.matches("\\d+")){
+                partesLista = Integer.parseInt(elemento);
+                lista.add(partesLista);
+            }else if(elemento.matches("\\d+\\.\\d+")){
+                partesLista = Double.parseDouble(elemento);
+                lista.add(partesLista);
+            }else if(elemento.equals("true") || elemento.equals("false")){
+                partesLista = Boolean.parseBoolean(elemento);
+                lista.add(partesLista);
+            }else{
+                lista.add(elemento);
+            }
+        }
+        
+        return lista;
+    }
 }
