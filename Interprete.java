@@ -33,6 +33,10 @@ public class Interprete{
             return 4;
         }else if(evaluate("^\\((\\w+)\\s*=\\s*(\\w+)\\)$", expresion)){
             return 5;
+        }else if(evaluate("^\\(.*atom.*\\)$", expresion)){
+            return 6;
+        }else if(evaluate("\\((list)\\s+(.*)\\)", expresion)){
+            return 7;
         }
         else{
             return -1;
