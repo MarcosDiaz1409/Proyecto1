@@ -37,6 +37,8 @@ public class Interprete{
             return 6;
         }else if(evaluate("\\((list)\\s+(.*)\\)", expresion)){
             return 7;
+        }else if(evaluate("\\d+(\\.\\d+)?|[+\\-*/]", expresion)){
+            return 8;
         }
         else{
             return -1;
@@ -173,6 +175,14 @@ public class Interprete{
                 System.out.println(operador.createLista(lista));
 
             break;
+
+            case 8:
+                
+                String prefix = operation.replaceAll("[\\(\\)\\s]+", " ").trim();
+                System.out.println(calculadora.evaluatePrefix(prefix));
+                
+            break;
+
 
             case -1:
                 System.out.println("Error: expresion invalida");
