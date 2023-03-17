@@ -35,12 +35,13 @@ public class Interprete{
             return 5;
         }else if(evaluate("^\\(.*atom.*\\)$", expresion)){
             return 6;
-        }else if(evaluate("\\((list)\\s+(.*)\\)", expresion)){
+        }else if(evaluate("^\\((list)\\s+(.*)\\)$", expresion)){
             return 7;
-        }else if(evaluate("\\d+(\\.\\d+)?|[+\\-*/]", expresion)){
+        }else if(evaluate("^\\d+(\\.\\d+)?|[+\\-*/]$", expresion)){
             return 8;
-        }
-        else{
+        }else if(evaluate("^\\(defun.*\\)$", expresion)){
+            return 9;
+        }else{
             return -1;
         }   
         
@@ -183,6 +184,9 @@ public class Interprete{
                 
             break;
 
+            case 9:
+
+            break;
 
             case -1:
                 System.out.println("Error: expresion invalida");

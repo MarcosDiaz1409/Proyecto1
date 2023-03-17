@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class Asignante{
 
     private HashMap<String, Variable> variables;
+    private HashMap<String, Funcion> funciones;
 
     /**
      * Paremetros de la clase
@@ -22,6 +23,7 @@ public class Asignante{
      */
     public Asignante(){
         variables = new HashMap<String,Variable>();
+        funciones = new HashMap<String, Funcion>();
     }
 
     /**
@@ -45,5 +47,15 @@ public class Asignante{
         }
 
     }
+
+    /**
+     * Metodo que almacena una funcion definida por el usuario
+     */
+    public void Defun(String nombre, String parametros){
+        Funcion newFunction = new Funcion(nombre, parametros);
+        this.funciones.put(nombre, newFunction);
+    }   
+
+
 
 }
