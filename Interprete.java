@@ -13,7 +13,7 @@ public class Interprete{
 
     Asignante asignante = new Asignante();
     Operador operador = new Operador();
-
+    Calculadora calculadora = new Calculadora();
 
 
     /**

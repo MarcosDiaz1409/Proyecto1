@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * @author Marcos Diaz y Daniel Machic
  * @Date: 11/03/2023
