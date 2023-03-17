@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Scanner;
+import javax.script.ScriptException;
 
 /**
  * @author Marcos Diaz y Daniel Machic
@@ -14,6 +16,7 @@ public class Interprete{
     Asignante asignante = new Asignante();
     Operador operador = new Operador();
     Calculadora calculadora = new Calculadora();
+    Scanner teclado = new Scanner(System.in);
 
 
     /**
@@ -35,11 +38,11 @@ public class Interprete{
             return 5;
         }else if(evaluate("^\\(.*atom.*\\)$", expresion)){
             return 6;
-        }else if(evaluate("^\\((list)\\s+(.*)\\)$", expresion)){
+        }else if(evaluate("\\((list)\\s+(.*)\\)", expresion)){
             return 7;
-        }else if(evaluate("^\\d+(\\.\\d+)?|[+\\-*/]$", expresion)){
+        }else if(evaluate("\\d+(\\.\\d+)?|[+\\-*/]", expresion)){
             return 8;
-        }else if(evaluate("^\\(defun.*\\)$", expresion)){
+        }else if(evaluate("\\(defun.*\\)", expresion)){
             return 9;
         }else{
             return -1;
@@ -185,6 +188,22 @@ public class Interprete{
             break;
 
             case 9:
+
+                String[] valores = operation.split(" ");
+                String nom = valores[1];
+
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 2; i < valores.length; i++) {
+                    stringBuilder.append(valores[i]).append(" ");
+                }
+
+                String parametro = stringBuilder.toString().trim();
+                System.out.println(parametro);
+                
+                asignante.agregarFuncion(nom, parametro);
+                System.out.println("La funcion " + nom + " se ha agregado");
+
+                
 
             break;
 

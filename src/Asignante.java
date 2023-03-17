@@ -1,4 +1,7 @@
 import java.util.HashMap;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 /**
  * @author Marcos Diaz y Daniel Machic
@@ -23,7 +26,7 @@ public class Asignante{
      */
     public Asignante(){
         variables = new HashMap<String,Variable>();
-        funciones = new HashMap<String, Funcion>();
+        funciones = new HashMap<String,Funcion>();
     }
 
     /**
@@ -51,11 +54,11 @@ public class Asignante{
     /**
      * Metodo que almacena una funcion definida por el usuario
      */
-    public void Defun(String nombre, String parametros){
+    public void agregarFuncion(String nombre, String parametros){
         Funcion newFunction = new Funcion(nombre, parametros);
-        this.funciones.put(nombre, newFunction);
+        funciones.put(nombre, newFunction);
     }   
 
-
+    
 
 }

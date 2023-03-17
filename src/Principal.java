@@ -31,7 +31,7 @@ public class Principal{
         if (!operation.equals("exit")) {
 
             int estado = interpreter.getType(operation);
-            //System.out.println(estado);
+            System.out.println(estado);
             interpreter.Operator(estado, operation);
             
         }
