@@ -1,8 +1,6 @@
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Scanner;
-import javax.script.ScriptException;
 
 /**
  * @author Marcos Diaz y Daniel Machic
@@ -40,7 +38,7 @@ public class Interprete{
             return 6;
         }else if(evaluate("\\((list)\\s+(.*)\\)", expresion)){
             return 7;
-        }else if(evaluate("\\d+(\\.\\d+)?|[+\\-*/]", expresion)){
+        }else if(evaluate("^\\((\\+|\\-|\\*|/)\\s.*\\)$", expresion)){
             return 8;
         }else if(evaluate("\\(defun.*\\)", expresion)){
             return 9;
@@ -48,6 +46,8 @@ public class Interprete{
             return -1;
         }   
         
+        //\\d+(\\.\\d+)?|[+\\-*/]
+
     }
 
     /**
@@ -76,9 +76,6 @@ public class Interprete{
                 String name = elementos[1];
                 String value = elementos[2];
 
-                System.out.println(name);
-                System.out.println(value);
-
                 Object valor = null;
                 try {
                     valor = Double.parseDouble(value);
@@ -96,6 +93,7 @@ public class Interprete{
 
                 String nomVar = operation;
                 Object valorN = asignante.getValue(nomVar);
+                
                 if(valorN != null){
                     System.out.println(valorN);
                 }
