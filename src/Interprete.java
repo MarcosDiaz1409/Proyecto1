@@ -196,7 +196,6 @@ public class Interprete{
                 }
 
                 String parametro = stringBuilder.toString().trim();
-                System.out.println(parametro);
                 
                 asignante.agregarFuncion(nom, parametro);
                 System.out.println("La funcion " + nom + " se ha agregado");
