@@ -1,4 +1,11 @@
 
+/**
+ * @author Marcos Diaz y Daniel Machic
+ * @Date: 12/03/2023
+ * Sección: 40
+ * Clase que instancia una función ingresada en el interprete 
+ */
+
 public class Funcion{
     
     private String nombre;
