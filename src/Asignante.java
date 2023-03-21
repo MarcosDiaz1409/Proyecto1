@@ -54,7 +54,14 @@ public class Asignante{
     public void agregarFuncion(String nombre, String parametros){
         Funcion newFunction = new Funcion(nombre, parametros);
         funciones.put(nombre, newFunction);
-    }   
+    }
+    
+    /**
+     * Metodo que verifica si la funcion existe o no
+     */
+    public boolean verifyFunc(String nombre) {
+        return funciones.containsKey(nombre);
+    }
 
     
 
